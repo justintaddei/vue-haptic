@@ -1,7 +1,7 @@
 {
   "name": "vue-haptic",
   "version": "0.0.0",
-  "description": "Declarative haptics for Vue.js using navigator.vibrate",
+  "description": "Flexible declarative haptics for Vue.js using navigator.vibrate",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -23,7 +23,14 @@
     "type": "git",
     "url": "git+https://github.com/justintaddei/vue-haptic.git"
   },
-  "keywords": [],
+  "keywords": [
+    "vue",
+    "directive",
+    "v-haptic",
+    "haptic",
+    "vibrate",
+    "vibration"
+  ],
   "author": "Justin Taddei",
   "license": "MIT",
   "bugs": {
