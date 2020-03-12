@@ -1,7 +1,7 @@
 {
-  "name": "npm-ts-template",
+  "name": "vue-haptic",
   "version": "0.0.0",
-  "description": "A template typescript-based npm packages",
+  "description": "Declarative haptics for Vue.js using navigator.vibrate",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -21,19 +21,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/justintaddei/npm-ts-template.git"
+    "url": "git+https://github.com/justintaddei/vue-haptic.git"
   },
   "keywords": [],
   "author": "Justin Taddei",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/justintaddei/npm-ts-template/issues"
+    "url": "https://github.com/justintaddei/vue-haptic/issues"
   },
-  "homepage": "https://github.com/justintaddei/npm-ts-template#readme",
+  "homepage": "https://github.com/justintaddei/vue-haptic#readme",
   "devDependencies": {
     "prettier": "^1.19.1",
     "tslint": "^6.0.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "vue": "^2.6.11"
   }
 }
