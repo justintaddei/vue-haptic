@@ -136,6 +136,7 @@ function computeHapticOptions(
     else if (binding.modifiers.pointerdown) trigger = 'pointerdown';
     else if (binding.modifiers.change) trigger = 'change';
     else if (binding.modifiers.input) trigger = 'input';
+    else if (binding.modifiers.click) trigger = 'click';
     // If none of the modifers were set then
     // we'll use 'pointerdown' as the event name
     else trigger = globalHapticOptions?.defaultHapticTrigger || 'pointerdown';
