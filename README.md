@@ -1,4 +1,4 @@
-# vue-haptics
+# vue-haptic
 
 Flexible declarative haptics for Vue.js using navigator.vibrate
 
