@@ -131,13 +131,14 @@ function computeHapticOptions(
   if (typeof pattern === 'undefined') throw new Error('[v-haptic] No haptic pattern was specified');
 
   // If `trigger` is undefined we'll check the modifers
-  if (typeof trigger === 'undefined') if (binding.modifiers.pointerup) trigger = 'pointerup';
-  if (binding.modifiers.pointerdown) trigger = 'pointerdown';
-  else if (binding.modifiers.change) trigger = 'change';
-  else if (binding.modifiers.input) trigger = 'input';
-  // If none of the modifers were set then
-  // we'll use 'pointerdown' as the event name
-  else trigger = globalHapticOptions?.defaultHapticTrigger || 'pointerdown';
+  if (typeof trigger === 'undefined')
+    if (binding.modifiers.pointerup) trigger = 'pointerup';
+    else if (binding.modifiers.pointerdown) trigger = 'pointerdown';
+    else if (binding.modifiers.change) trigger = 'change';
+    else if (binding.modifiers.input) trigger = 'input';
+    // If none of the modifers were set then
+    // we'll use 'pointerdown' as the event name
+    else trigger = globalHapticOptions?.defaultHapticTrigger || 'pointerdown';
 
   return {
     pattern,
