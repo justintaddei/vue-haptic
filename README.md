@@ -112,9 +112,8 @@ Vue.use(VueHaptic, {
 ---
 
 **disabled**  
-Used to globally disable haptic feedback.
-
-> This can also be changed from the any component by setting `vm.$haptics.disabled`
+Used to globally disable haptic feedback.  
+This can also be changed from the any component by setting `vm.$haptics.disabled`
 
 ## Modifiers
 
@@ -152,7 +151,7 @@ Sometimes you need to trigger haptics based on something other than an event. Fo
 The trigger is function is passed the following arguments
 
 - `activator` - a function that, when called, with activate the haptic feedback. It takes a `pattern` as an option argument. If a pattern is not passed, it will use the pattern declared in the markup, or the default pattern.
-- el - the `HTMLElement` that the directive is bound to.
+- `el` - the `HTMLElement` that the directive is bound to.
 
 ```html
 <input v-haptic="customTrigger" v-model="value" />
@@ -162,21 +161,20 @@ The trigger is function is passed the following arguments
 <script>
   export default {
     data() {
-        return {value: ''}
+      return { value: '' };
     },
     methods: {
       customTrigger(activate, el) {
         this.$watch('value', value => {
-            if (value === 'vibrate)
-                activate([100,200,100])
-        })
-      }
-    }
-  }
+          if (value === 'vibrate') activate([100, 200, 100]);
+        });
+      },
+    },
+  };
 </script>
 ```
 
-## \$haptics.cancel()
+## vm.\$haptics.cancel()
 
 ---
 
