@@ -1,6 +1,6 @@
 # vue-haptic
 
-Flexible declarative haptics for Vue.js using navigator.vibrate
+Flexible, declarative, haptics for Vue.js using `navigator.vibrate`
 
 ## Install
 
@@ -28,7 +28,7 @@ VUe.use(VueHaptic, {
 // ...
 ```
 
-A pointer-events polyfill is recomended to be used alongside `vue-haptic` to support older browsers.  
+A `pointer-events` polyfill is recommended to be used alongside `vue-haptic` to support older browsers.  
 PEP is good choice: https://github.com/jquery/PEP
 
 ## Usage
@@ -58,7 +58,7 @@ to control when the haptic feedback occurs -->
 <button
   v-haptic="{
     pattern: [20,100,20],
-    trigger: customTriggerFuction | event-name
+    trigger: customTriggerFunction | event-name
   }"
 >
   Vibrate!
@@ -103,7 +103,7 @@ Used to configure the default event used to trigger haptic feedback. By default,
 
 ```js
 Vue.use(VueHaptic, {
-  // patterns: {...
+  // patterns: {...},
 
   defaultHapticTrigger: 'touchstart',
 });
@@ -113,13 +113,22 @@ Vue.use(VueHaptic, {
 
 **disabled**  
 Used to globally disable haptic feedback.  
-This can also be changed from the any component by setting `vm.$haptics.disabled`
+This can also be changed from any component by setting `vm.$haptics.disabled`.  
+The default is `false`.
+
+```js
+Vue.use(VueHaptic, {
+  // patterns: {...},
+
+  disabled: false,
+});
+```
 
 ## Modifiers
 
 ---
 
-The following modifiers change the trigger to their respective events.  
+The following modifiers change the haptics-trigger to their respective events.  
 **`v-haptic.click`**  
 **`v-haptic.pointerup`**  
 **`v-haptic.pointerdown`**  
@@ -132,7 +141,7 @@ The following modifiers change the trigger to their respective events.
 
 ### Custom events
 
-To change the trigger event to one not supported be the modifiers about, set it using the options object on the element.
+To change the haptics-trigger event to one not provided as a modifier, set it using the `trigger` option.
 
 ```html
 <button
@@ -148,9 +157,9 @@ To change the trigger event to one not supported be the modifiers about, set it 
 
 Sometimes you need to trigger haptics based on something other than an event. For that you should use a custom trigger function.
 
-The trigger is function is passed the following arguments
+The trigger is a function that is passed the following arguments:
 
-- `activator` - a function that, when called, with activate the haptic feedback. It takes a `pattern` as an option argument. If a pattern is not passed, it will use the pattern declared in the markup, or the default pattern.
+- `activator` - a function that, when called, will activate the haptic feedback. It takes a `pattern` as an option argument. If a pattern is not passed, it will use the pattern declared in the markup, or the default pattern.
 - `el` - the `HTMLElement` that the directive is bound to.
 
 ```html

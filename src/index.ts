@@ -108,7 +108,7 @@ function computeHapticOptions(
       // If a trigger is defined, we will set it as the trigger
       if (directiveValue.trigger) trigger = directiveValue.trigger;
       // Again, we won't break here because
-      // we either need to hit the next if statment
+      // we either need to hit the next if statement
       // or the default case
 
       if (directiveValue.pattern) {
@@ -130,14 +130,14 @@ function computeHapticOptions(
   // or they didn't define a default pattern
   if (typeof pattern === 'undefined') throw new Error('[v-haptic] No haptic pattern was specified');
 
-  // If `trigger` is undefined we'll check the modifers
+  // If `trigger` is undefined we'll check the modifiers
   if (typeof trigger === 'undefined')
     if (binding.modifiers.pointerup) trigger = 'pointerup';
     else if (binding.modifiers.pointerdown) trigger = 'pointerdown';
     else if (binding.modifiers.change) trigger = 'change';
     else if (binding.modifiers.input) trigger = 'input';
     else if (binding.modifiers.click) trigger = 'click';
-    // If none of the modifers were set then
+    // If none of the modifiers were set then
     // we'll use 'pointerdown' as the event name
     else trigger = globalHapticOptions?.defaultHapticTrigger || 'pointerdown';
 
