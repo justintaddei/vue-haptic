@@ -1,6 +1,6 @@
 {
   "name": "vue-haptic",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "Flexible declarative haptics for Vue.js using navigator.vibrate",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
