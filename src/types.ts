@@ -2,12 +2,16 @@
  * A haptic vibration pattern
  */
 export type HapticPattern = number | number[]
+
 /**
  * A function defined by the user of the plugin
  * to setup a custom trigger for haptic feedback.
  */
 export type HapticTriggerFunction = (activator: (pattern?: HapticPattern | string) => void, el: HTMLElement) => void
-
+/**
+ * A haptic vibration pattern
+ */
+export type HapticTrigger = string | HapticTriggerFunction
 /**
  * Global Haptic Options
  */
