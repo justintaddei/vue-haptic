@@ -58,11 +58,9 @@ export default {
         }
 
         if (typeof trigger === 'string') {
-          if (vNode.componentInstance) {
-            vNode.componentInstance.$on(trigger, () => vibrate())
-          } else {
-            el.addEventListener(trigger, () => vibrate())
-          }
+          if (vNode.componentInstance) vNode.componentInstance.$on(trigger, () => vibrate())
+
+          el.addEventListener(trigger, () => vibrate())
         } else {
           trigger((pattern) => {
             if (globalOptions.disabled) return
