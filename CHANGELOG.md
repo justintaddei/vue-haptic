@@ -1,5 +1,14 @@
 # CHANGELOG
 
+#### 1.1.1
+
+**Bug fixes**
+- Fixed an issue where binding multiple haptics directives to a single element would only use the pattern of the last-bound directive (#2).
+- Fixed an issue where native events couldn't be used as a haptic trigger on Vue components (#2).
+
+**Other**
+- Added badges to README
+
 ### 1.1.0
 
 *Features*

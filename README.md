@@ -1,5 +1,12 @@
 # vue-haptic <!-- omit in toc -->
 
+![](https://img.shields.io/github/issues-raw/justintaddei/vue-haptic.svg?style=flat)
+![](https://img.shields.io/npm/v/vue-haptic.svg?style=flat)
+![](https://img.shields.io/npm/dt/vue-haptic.svg?style=flat)
+![](https://img.shields.io/npm/l/vue-haptic.svg?style=flat)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat)](https://github.com/prettier/prettier)
+![](https://img.shields.io/badge/language-typescript-blue.svg?style=flat)
+
 Flexible, declarative, haptics for Vue.js using `navigator.vibrate`
 
 **Contents**
