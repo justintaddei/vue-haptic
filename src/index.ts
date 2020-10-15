@@ -1,16 +1,18 @@
 import { PluginObject } from 'vue/types/plugin'
-import { HapticPattern, IGlobalHapticOptions } from './types'
+import { HapticPattern, HapticTrigger, IGlobalHapticOptions } from './types'
 import getPattern from './utils/getPattern'
 import getTrigger from './utils/getTrigger'
 import './utils/polyfill'
 import { warn } from './utils/warn'
+
+type HapticPatternMap = Map<HapticTrigger, HapticPattern>
 
 /**
  * A WeekMap used to store the haptic pattern of a given
  * element. We use a WeekMap here because if we used a regular Map
  * object, it would hold the element we're using as a key in memory
  */
-const patternMap = new WeakMap<HTMLElement, HapticPattern>()
+const patternMap = new WeakMap<HTMLElement, HapticPatternMap>()
 
 export default {
   install(Vue, globalOptions: IGlobalHapticOptions) {
@@ -50,11 +52,13 @@ export default {
       bind(el, binding, vNode) {
         const trigger = getTrigger(binding, globalOptions)
 
-        patternMap.set(el, getPattern(binding, globalOptions))
+        if (!patternMap.has(el)) patternMap.set(el, new Map())
+
+        patternMap.get(el)!.set(trigger, getPattern(binding, globalOptions))
 
         const vibrate = (pattern?: HapticPattern) => {
           if (globalOptions.disabled) return
-          return navigator.vibrate(pattern ?? patternMap.get(el)!)
+          return navigator.vibrate(pattern ?? patternMap.get(el)!.get(trigger)!)
         }
 
         if (typeof trigger === 'string') {
@@ -79,8 +83,10 @@ export default {
         }
       },
       update(el, binding) {
+        const trigger = getTrigger(binding, globalOptions)
+        warn(!patternMap.get(el)!.has(trigger), 'The haptic trigger cannot be updated dynamically.')
         const pattern = getPattern(binding, globalOptions)
-        patternMap.set(el, pattern)
+        patternMap.get(el)!.set(trigger, pattern)
       }
     })
   }
