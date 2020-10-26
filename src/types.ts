@@ -32,4 +32,15 @@ export interface IGlobalHapticOptions {
    * to something other than "pointerdown"
    */
   defaultHapticTrigger?: string
+  /**
+   * The period (in milliseconds) after the haptics are triggered and before the haptics actually play,
+   * during which the haptics will be canceled if the user moves their figure,
+   * or otherwise causes a `pointercancel` or `touchcancel` event to fire (i.e. touching an element while scrolling will not result in haptic feedback).
+   *
+   * @note
+   * Only applicable when the haptic trigger is either `"pointerdown"` or `"touchstart"`
+   *
+   * @default 75
+   */
+  cancellationPeriod: number
 }

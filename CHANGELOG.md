@@ -1,5 +1,10 @@
 # CHANGELOG
 
+### 1.2.0
+
+**Features**
+- Added `cancellationPeriod` option in response to issue #4
+
 #### 1.1.1
 
 **Bug fixes**

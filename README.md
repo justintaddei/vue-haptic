@@ -218,6 +218,28 @@ A trigger function as the following signature:
 </script>
 ```
 
+## Miscellaneous
+
+### cancellationPeriod  
+Defines the period of time (in milliseconds) after the haptic trigger is fired but before the haptic feedback is actually activated. During this period the haptic feedback will be canceled if the user moves their finger or otherwise causes a `"pointercancel"` or `"touchcancel"` event to fire. This option is only applicable if the haptic trigger is `"pointerdown"` or `"touchstart"`.  
+
+**Default:** 75
+
+```html
+<!-- It can be used per-directive -->
+<button v-haptic="{
+  cancellationPeriod: 100
+}">Vibrate!</button>
+```
+```js
+// or globally
+Vue.use(VueHaptic, {
+  // patterns: {...},
+
+  cancellationPeriod: 100
+});
+```
+
 ## vm.\$haptics.cancel()
 
 ---
