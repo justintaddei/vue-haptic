@@ -68,14 +68,14 @@ export default {
           if (vNode.componentInstance) vNode.componentInstance.$on(trigger, () => vibrate())
 
           el.addEventListener(trigger, () => {
-            if (!/pointerdown|touchstart/.test(trigger) || parseInt(el.dataset.cancellationPeriod!) === 0) vibrate()
+            if (!/pointerdown|touchstart/.test(trigger) || parseInt(el.dataset.cancellationPeriod!, 10) === 0) vibrate()
             else {
               const token = setTimeout(() => {
                 vibrate()
 
                 document.removeEventListener('pointercancel', cancelHaptic)
                 document.removeEventListener('touchcancel', cancelHaptic)
-              }, parseInt(el.dataset.cancellationPeriod!) ?? 75)
+              }, parseInt(el.dataset.cancellationPeriod!, 10) ?? 75)
 
               const cancelHaptic = () => {
                 clearTimeout(token)
