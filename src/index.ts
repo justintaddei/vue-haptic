@@ -1,3 +1,4 @@
+import { parse } from 'path'
 import { PluginObject } from 'vue/types/plugin'
 import { HapticPattern, HapticTrigger, IGlobalHapticOptions } from './types'
 import getPattern from './utils/getPattern'
@@ -50,6 +51,8 @@ export default {
 
     Vue.directive('haptic', {
       bind(el, binding, vNode) {
+        el.dataset.cancellationPeriod = binding.value?.cancellationPeriod ?? globalOptions.cancellationPeriod ?? 75
+
         const trigger = getTrigger(binding, globalOptions)
 
         if (!patternMap.has(el)) patternMap.set(el, new Map())
@@ -64,7 +67,27 @@ export default {
         if (typeof trigger === 'string') {
           if (vNode.componentInstance) vNode.componentInstance.$on(trigger, () => vibrate())
 
-          el.addEventListener(trigger, () => vibrate())
+          el.addEventListener(trigger, () => {
+            if (!/pointerdown|touchstart/.test(trigger) || parseInt(el.dataset.cancellationPeriod!) === 0) vibrate()
+            else {
+              const token = setTimeout(() => {
+                vibrate()
+
+                document.removeEventListener('pointercancel', cancelHaptic)
+                document.removeEventListener('touchcancel', cancelHaptic)
+              }, parseInt(el.dataset.cancellationPeriod!) ?? 75)
+
+              const cancelHaptic = () => {
+                clearTimeout(token)
+
+                document.removeEventListener('pointercancel', cancelHaptic)
+                document.removeEventListener('touchcancel', cancelHaptic)
+              }
+
+              document.addEventListener('pointercancel', cancelHaptic)
+              document.addEventListener('touchcancel', cancelHaptic)
+            }
+          })
         } else {
           trigger((pattern) => {
             if (globalOptions.disabled) return
@@ -83,6 +106,8 @@ export default {
         }
       },
       update(el, binding) {
+        el.dataset.cancellationPeriod = binding.value?.cancellationPeriod ?? globalOptions.cancellationPeriod ?? 75
+
         const trigger = getTrigger(binding, globalOptions)
         warn(!patternMap.get(el)!.has(trigger), 'The haptic trigger cannot be updated dynamically.')
         const pattern = getPattern(binding, globalOptions)
