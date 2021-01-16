@@ -1,4 +1,3 @@
-import { parse } from 'path'
 import { PluginObject } from 'vue/types/plugin'
 import { HapticPattern, HapticTrigger, IGlobalHapticOptions } from './types'
 import getPattern from './utils/getPattern'
