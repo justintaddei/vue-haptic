@@ -22,6 +22,11 @@
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/justintaddei/vue-haptic.git"
@@ -42,7 +47,10 @@
   },
   "homepage": "https://github.com/justintaddei/vue-haptic#readme",
   "devDependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "@types/node": "^14.14.3",
+    "husky": "^7.0.1",
     "prettier": "^2.1.2",
     "rollup": "^2.32.1",
     "rollup-plugin-typescript2": "^0.28.0",
