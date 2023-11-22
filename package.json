@@ -47,7 +47,7 @@
   },
   "homepage": "https://github.com/justintaddei/vue-haptic#readme",
   "devDependencies": {
-    "@commitlint/cli": "^12.1.4",
+    "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^13.1.0",
     "@types/node": "^20.8.0",
     "husky": "^7.0.1",
